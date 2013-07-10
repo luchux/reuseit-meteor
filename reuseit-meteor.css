@@ -1,1 +1,79 @@
 /* CSS declarations go here */
+body {
+    background-image:url('/img/bg_rep.jpg');
+}
+
+.whole-container{
+  background-image: url('http://www.clker.com/cliparts/1/b/f/b/1219803093415865566flying%20bird.svg.hi.png'), url('http://fc04.deviantart.net/fs71/f/2012/232/0/3/black_flying_birds_by_jassy2012-d5bs80m.png'), url('http://www.freestockphotos.biz/pictures/16/16846/Illustration+of+a+silhouette+of+a+tree.png'),url('/img/bg_grass.png');
+  background-repeat:no-repeat, no-repeat, no-repeat,repeat-x;
+  background-position: left top, right center,  right bottom, center bottom;
+
+}
+.thumbnail img {
+      border-color:white;
+      height: 180px;
+      width: 380px;
+      overflow: hidden;
+  }
+
+#left_pane
+{
+    width :100px;
+    height:200px;
+    position: relative;
+    border: 3px coral solid;
+}
+
+#bottom_pic_wrapper
+{
+    width:20px;
+    height:30px;
+    position: absolute;
+    bottom: 0;
+    border: 2px coral solid;
+}
+
+.thumbnail{
+    background-color: rgba(255, 255, 255, 0.1);
+    border:3px solid rgb(99, 95, 95);
+}
+
+.thumbnail .like-buttons{
+  color:gray;
+  text-align: center;
+
+}
+
+.thumbnail .btn-direction, .btn-people{
+  background-color: hsl(58, 87%, 14%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbd40f", endColorstr="#424004");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#dbd40f), to(#424004));
+  background-image: -moz-linear-gradient(top, #dbd40f, #424004);
+  background-image: -ms-linear-gradient(top, #dbd40f, #424004);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dbd40f), color-stop(100%, #424004));
+  background-image: -webkit-linear-gradient(top, #dbd40f, #424004);
+  background-image: -o-linear-gradient(top, #dbd40f, #424004);
+  background-image: linear-gradient(#dbd40f, #424004);
+  border-color: #424004 #424004 hsl(58, 87%, 6%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.52);
+  -webkit-font-smoothing: antialiased;
+}
+
+.caption {
+  text-align:center;
+}
+.caption h3{
+    color:rgb(255,255,255);
+
+}
+.caption p{
+  color:gray;
+}
+
+
+.title {
+    color: green;
+    text-align:center;
+}
