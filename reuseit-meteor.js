@@ -1,12 +1,18 @@
 if (Meteor.isClient) {
 
-  //Creation of DataStore
+  //Creation of Collection UnusedObjects
   UnusedObjects = new Meteor.Collection('uobjects')
 
-  Template.unused_objects = function () {
-    return UnusedObjects.find({}).fetch();
+  //Subscribing to published objects
+  //TODO: here is where I should filter and get only those objects per user logged in.
+  Meteor.subscribe("all-objects");
+
+  //Injection of unused_objects list into template unusedobject.
+  Template.unusedobject.unused_objects = function () {
+    return UnusedObjects.find({});
   };
 
+  /* example eventes
   Template.hello.events({
     'click input' : function () {
       // template data, if any, is available in 'this'
@@ -14,12 +20,16 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
     }
   });
+  */
 }
 
 if (Meteor.isServer) {
-  //Creation of DataStore
+  //Creation of Collection UnusedObjects.
   UnusedObjects = new Meteor.Collection('uobjects')
+
   //Popoulate the db
+  //TODO: will comment cause added many elements already to mongo. Add quality data.
+  /*
   UnusedObjects.insert({
     "date_cyrcles ": "2013-06-16",
     "date_public": "2013-06-16",
@@ -29,7 +39,12 @@ if (Meteor.isServer) {
     "name": "test",
     "resource_uri": "/api/object/7/"
   });
+  */
 
+  //Publishing all-objects for UnusedObjects collection.
+  Meteor.publish("all-objects", function () {
+    return UnusedObjects.find(); // everything
+  });
   Meteor.startup(function () {
     // code to run on server at startup
   });
