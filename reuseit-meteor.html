@@ -3,11 +3,41 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> unusedobject}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="unusedobject">
+<div class="whole-container">
+    <div id="container">
+      <div id="menu" class="title"><h3> .:: Re-Use-It ::. the way of leveling your e-karma</h3></div>
+      <div id="content" class="container">
+          <ul class="thumbnails" id="ul-content">
+            {{#each unused_objects}}
+            <li class="span5">
+              <div class="thumbnail">
+                <img src={{image}} class="img-rounded" >
+                <div class='btn-toolbar like-buttons'>
+                        <a href="#" class="btn btn-inverse" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Like it!"><i class="icon-thumbs-up icon-white"></i>(10)</a>
+                        <a href="#" class="btn btn-inverse" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Unlike it!"><i class="icon-thumbs-down icon-white"></i>(4)</a>
+                        <a href="#" class="btn btn-inverse" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Report"><i class="icon-flag icon-white"></i></a>
+
+                </div>
+
+                <div class='caption'>
+                  <h3>{{name}}</h3>
+                  <p>{{descr}}</p>
+                  <div class='btn-toolbar request-buttons'>
+                        <a href="#" class="btn btn-primary btn-success" id="btn-request">Request</a>
+                        <a href="#" class="btn btn-danger" id="btn-forget">Forget</a>
+                        <a href="#" class="btn btn-inverse" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="profile" ><i class="icon-user icon-white"></i></a>
+                        <a href="#" class="btn btn-inverse" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="directions"><i class="icon-map-marker icon-white"></i></a>
+                        <a href="#" class="btn btn-inverse" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="share"><i class="icon-bell icon-white"></i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
 </template>
