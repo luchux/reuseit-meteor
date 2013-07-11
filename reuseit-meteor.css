@@ -3,6 +3,7 @@ body {
     background-image:url('/img/bg_rep.jpg');
 }
 
+/*TODO: make this images static */
 .whole-container{
   background-image: url('http://www.clker.com/cliparts/1/b/f/b/1219803093415865566flying%20bird.svg.hi.png'), url('http://fc04.deviantart.net/fs71/f/2012/232/0/3/black_flying_birds_by_jassy2012-d5bs80m.png'), url('http://www.freestockphotos.biz/pictures/16/16846/Illustration+of+a+silhouette+of+a+tree.png'),url('/img/bg_grass.png');
   background-repeat:no-repeat, no-repeat, no-repeat,repeat-x;
