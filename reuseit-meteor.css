@@ -44,7 +44,7 @@ body {
 .thumbnail img {
       border-color:white;
       height: 180px;
-      width: 380px;
+      width: 300px;
       overflow: hidden;
   }
 
@@ -53,6 +53,7 @@ body {
   text-align:center;
 }
 .caption h3{
+    font-family: 'Chela One';
     color:rgb(255,255,255);
 
 }
@@ -62,6 +63,11 @@ body {
 
 
 .title {
+    font-family: 'Rum Raisin', sans-serif;
     color: green;
     text-align:center;
+}
+.title h3{
+  font-family: 'Indie Flower', cursive;
+  font-size: 50px;
 }
