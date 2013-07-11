@@ -12,15 +12,19 @@ if (Meteor.isClient) {
     return UnusedObjects.find({});
   };
 
-  /* example eventes
-  Template.hello.events({
-    'click input' : function () {
+  //Catching Request/Forget events on the template
+  Template.unusedobject.events({
+    'click .request-buttons' : function () {
       // template data, if any, is available in 'this'
       if (typeof console !== 'undefined')
-        console.log("You pressed the button");
+        console.log("button pressed");
     }
   });
-  */
+
+  //intention of cleaning the databse
+  function remove_database(){
+    UnusedObjects.remove({})
+  }
 }
 
 if (Meteor.isServer) {
