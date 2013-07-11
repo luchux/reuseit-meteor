@@ -9,12 +9,7 @@ body {
   background-position: left top, right center,  right bottom, center bottom;
 
 }
-.thumbnail img {
-      border-color:white;
-      height: 180px;
-      width: 380px;
-      overflow: hidden;
-  }
+
 
 #left_pane
 {
@@ -36,6 +31,7 @@ body {
 .thumbnail{
     background-color: rgba(255, 255, 255, 0.1);
     border:3px solid rgb(99, 95, 95);
+    text-align: center;
 }
 
 .thumbnail .like-buttons{
@@ -43,6 +39,13 @@ body {
   text-align: center;
 
 }
+
+.thumbnail img {
+      border-color:white;
+      height: 180px;
+      width: 380px;
+      overflow: hidden;
+  }
 
 .thumbnail .btn-direction, .btn-people{
   background-color: hsl(58, 87%, 14%) !important;
