@@ -8,17 +8,24 @@ if (Meteor.isClient) {
   Meteor.subscribe("all-objects");
 
   //Injection of unused_objects list into template unusedobject.
-  Template.unusedobject.unused_objects = function () {
+  Template.unusedobject_list.unused_objects = function () {
     return UnusedObjects.find({});
   };
 
   //Catching Request/Forget events on the template
-  Template.unusedobject.events({
-    'click .request-buttons' : function () {
-      // template data, if any, is available in 'this'
+  Template.unusedobject_list.events({
+    //forget button
+    'click .btn-forget' : function () {
       if (typeof console !== 'undefined')
-        console.log("button pressed");
-    }
+        console.log('User want to forget: ')
+        console.log(this._id)
+      },
+    //request button
+    'click .btn-request': function () {
+      if (typeof console !== 'undefined')
+        console.log('User want to request: ')
+        console.log(this._id)
+      }
   });
 
   //intention of cleaning the databse
@@ -31,19 +38,47 @@ if (Meteor.isServer) {
   //Creation of Collection UnusedObjects.
   UnusedObjects = new Meteor.Collection('uobjects')
 
-  //Popoulate the db
-  //TODO: will comment cause added many elements already to mongo. Add quality data.
-  /*
+  UnusedObjects.remove({});
+
   UnusedObjects.insert({
     "date_cyrcles ": "2013-06-16",
     "date_public": "2013-06-16",
-    "descr": "testing",
-    "id": 7,
-    "image": "http://localhost:8000/media/images/None/SAM_2344.JPG",
-    "name": "test",
+    "descr": "Camel in excellent conditions",
+    "id": 1,
+    "image": "objects_images/2.JPG",
+    "name": "Camel",
     "resource_uri": "/api/object/7/"
   });
-  */
+
+  UnusedObjects.insert({
+    "date_cyrcles ": "2013-06-16",
+    "date_public": "2013-06-16",
+    "descr": "Ukelele Thenesis like new, good strings",
+    "id": 2,
+    "image": "objects_images/1.JPG",
+    "name": "Ukelele",
+    "resource_uri": "/api/object/7/"
+  });
+
+  UnusedObjects.insert({
+    "date_cyrcles ": "2013-06-16",
+    "date_public": "2013-06-16",
+    "descr": "Turtle in excellent conditions",
+    "id": 3,
+    "image": "objects_images/3.JPG",
+    "name": "Tortuga",
+    "resource_uri": "/api/object/7/"
+  });
+
+  UnusedObjects.insert({
+    "date_cyrcles ": "2013-06-16",
+    "date_public": "2013-06-16",
+    "descr": "Morris 79 with new engine",
+    "id": 4,
+    "image": "objects_images/4.JPG",
+    "name": "Morris",
+    "resource_uri": "/api/object/7/"
+  });
 
   //Publishing all-objects for UnusedObjects collection.
   Meteor.publish("all-objects", function () {
