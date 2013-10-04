@@ -1,19 +1,37 @@
+UnusedObjects = new Meteor.Collection('uobjects')
 Meteor.subscribe("objects-others");
 
 //Injection of unused_objects list into template unusedobject.
-Template.unusedobject_list.unused_objects = function () {
+Template.objectList.unused_objects = function () {
   return UnusedObjects.find({});
 };
 
-//Catching Request/Forget events on the template
-Template.unusedobject_list.events({
+Template.object.rendered = function () {
 
-  //forget button
-  'click .btn-forget' : function () {
-    if (typeof console !== 'undefined')
-      console.log(Meteor.userId() + ' wants to forget: ')
-      console.log(this._id)
-    },
+  latlon = new google.maps.LatLng(this.data.lat, this.data.lng)
+
+  var mapOptions = {
+        center: latlon,
+        zoom: 15,
+        disableDefaultUI: true,
+        zoomControl: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  this.el = this.find('.map')
+  map = new google.maps.Map(this.el, mapOptions);
+  map.setCenter(latlon);
+
+  var marker = new google.maps.Marker({
+    position: latlon,
+    title:this.data.address,
+    icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+  });
+  marker.setMap(map);
+}
+
+//Catching Request/Forget events on the template
+Template.object.events({
 
   //request button
   'click .btn-request': function () {
@@ -26,6 +44,16 @@ Template.unusedobject_list.events({
       return false
     },
 
+    //forget button
+  'click .btn-forget' : function () {
+    if (typeof console !== 'undefined')
+      console.log(Meteor.userId() + ' wants to forget: ')
+      console.log(this._id)
+
+      Meteor.call('forget',this._id)
+      return false
+    },
+
   //get profile button
   'click .btn-profile': function () {
     if (typeof console !== 'undefined')
@@ -34,10 +62,12 @@ Template.unusedobject_list.events({
     },
 
   //get directions button
-  'click .btn-direction': function () {
+  'click .btn-direction': function (evt, template) {
+    $(template.el).toggle()
     if (typeof console !== 'undefined')
       console.log('User want directions: ')
       console.log(this._id)
+      console.log(this.el)
     },
 
   //share button
@@ -66,3 +96,4 @@ Template.unusedobject_list.events({
       console.log(this._id)
     }
 });
+
