@@ -4,13 +4,12 @@ body {
 }
 
 /*TODO: make this images static */
-.whole-container{
+#main_container{
   background-image: url('http://www.clker.com/cliparts/1/b/f/b/1219803093415865566flying%20bird.svg.hi.png'), url('http://fc04.deviantart.net/fs71/f/2012/232/0/3/black_flying_birds_by_jassy2012-d5bs80m.png'), url('http://www.freestockphotos.biz/pictures/16/16846/Illustration+of+a+silhouette+of+a+tree.png'),url('/img/bg_grass.png');
   background-repeat:no-repeat, no-repeat, no-repeat,repeat-x;
   background-position: left top, right center,  right bottom, center bottom;
 
 }
-
 
 #left_pane
 {
@@ -29,10 +28,32 @@ body {
     border: 2px coral solid;
 }
 
+.container-thumbs{
+  width:;
+
+}
+
 .thumbnail{
     background-color: rgba(255, 255, 255, 0.1);
     border:3px solid rgb(99, 95, 95);
     text-align: center;
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+    width: 350px;
+    height: 480px;
+}
+
+.thumbnails .back{
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+    position: absolute;
+    background: #fff;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 .thumbnail .like-buttons{
@@ -41,13 +62,32 @@ body {
 
 }
 
-.thumbnail img {
-      border-color:white;
-      height: 180px;
-      width: 300px;
-      overflow: hidden;
-  }
+.flipped .thumbnail{
+  transform:rotateY(180deg);
 
+}
+.flipped .back {
+  transform:rotateY(0deg);
+}
+
+.thumbnail .img {
+      border-color:white;
+      height: 200px;
+      width: 350px;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: cover;
+      background-color: #ddd;
+      position: relative;
+      border-radius: 3px;
+}
+
+.thumbnail .img .map {
+          display: none;
+          height: 100%;
+          z-index: 5;
+}
 
 .caption {
   text-align:center;
@@ -60,7 +100,6 @@ body {
 .caption p{
   color:gray;
 }
-
 
 .title {
     font-family: 'Rum Raisin', sans-serif;

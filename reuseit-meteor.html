@@ -1,34 +1,56 @@
+
 <head>
-  <title>reuseit-meteor</title>
-  <link href='http://fonts.googleapis.com/css?family=Rum+Raisin' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<title>reuseit-meteor</title>
+<link href='http://fonts.googleapis.com/css?family=Rum+Raisin' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">   </script>
 </head>
 
 <body>
-  {{> main_template }}
+<div id="main_container" class="container-fluid">
+  {{> header}}
+  <div class="row-fluid">
+      {{renderPage}}
+  </div>
+</div>
 </body>
 
-<template name="main_template">
-  {{loginButtons}}
-<div class="whole-container container">
-    <div id="container">
-      <div id="menu" class="title"><h3> .:: Re-Use-It ::. the way of leveling your e-karma</h3></div>
-      <div id="content" class="container">
-          {{> unusedobject_list }}
+<template name="header">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="{{objectListPath}}">ReUseIt</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li>{{loginButtons}}</li>
+        </ul>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
-<template name="unusedobject_list">
-<ul class="thumbnails" id="ul-content">
-  {{#each unused_objects}}
-  <li class="span5">
-    <div class="thumbnail">
-      <img src={{image}} class="img-rounded" >
+
+<template name="objectList">
+  <ul class="thumbnails" id="ul-content">
+    {{#each unused_objects}}
+      <li>
+        {{>object}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="object">
+    <div class="thumbnail front">
+      <div class="img" style="background-image:url({{image}})">
+        <div class="map" id="map-canvas"></div>
+      </div>
       <div class='btn-toolbar like-buttons'>
-              <a href="#" class="btn btn-inverse btn-likeit" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Like it!"><i class="icon-thumbs-up icon-white"></i>({{ likes }})</a>
-              <a href="#" class="btn btn-inverse btn-dislikeit" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Unlike it!"><i class="icon-thumbs-down icon-white"></i>({{ dislikes }})</a>
-              <a href="#" class="btn btn-inverse btn-report" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Report"><i class="icon-flag icon-white"></i>({{ spam }})</a>
+              <a class="btn btn-inverse btn-likeit" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Like it!"><i class="icon-thumbs-up icon-white"></i>({{ likes }})</a>
+              <a class="btn btn-inverse btn-dislikeit" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Unlike it!"><i class="icon-thumbs-down icon-white"></i>({{ dislikes }})</a>
+              <a class="btn btn-inverse btn-report" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Report"><i class="icon-flag icon-white"></i>({{ spam }})</a>
 
       </div>
 
@@ -36,15 +58,39 @@
         <h3>{{name}}</h3>
         <p>{{descr}}</p>
         <div class='btn-toolbar request-buttons'>
-              <a href="#" class="btn btn-primary btn-success btn-request">Request</a>
-              <a href="#" class="btn btn-danger btn-forget">Forget</a>
-              <a href="#" class="btn btn-inverse btn-profile" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="profile" ><i class="icon-user icon-white"></i></a>
-              <a href="#" class="btn btn-inverse btn-direction" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="directions"><i class="icon-map-marker icon-white"></i></a>
-              <a href="#" class="btn btn-inverse btn-share" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="share"><i class="icon-bell icon-white"></i></a>
+              <a class="btn btn-primary btn-success btn-request">Request</a>
+              <a class="btn btn-danger btn-forget">Forget</a>
+              <a class="btn btn-inverse btn-profile" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="profile" ><i class="icon-user icon-white"></i></a>
+              <a class="btn btn-inverse btn-direction" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="directions"><i class="icon-map-marker icon-white"></i></a>
+              <a class="btn btn-inverse btn-share" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="share"><i class="icon-bell icon-white"></i></a>
         </div>
       </div>
+
+    <!--
+    <div class='thumbnail back'>
+      {{! profile detail will be rendered here }}
+      <div class="img" style="background-image:url({{image}})">
+      </div>
     </div>
-  </li>
-  {{/each}}
-</ul>
+    -->
+  </div>
+</template>
+
+<template name="requestedobject_list">
+  <ul class="thumbnails" id="ul-content">
+    {{#each requested_objects}}
+      <li class="span6">
+        {{>requestedobject}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="requestedobject">
+  {{name}}
+</template>
+
+<template name="add_object">
+  <h6>Here we will add new object for this client</h6>
+
 </template>
