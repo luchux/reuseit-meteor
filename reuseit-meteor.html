@@ -76,21 +76,49 @@
   </div>
 </template>
 
-<template name="requestedobject_list">
-  <ul class="thumbnails" id="ul-content">
-    {{#each requested_objects}}
-      <li class="span6">
-        {{>requestedobject}}
-      </li>
-    {{/each}}
-  </ul>
+<template name="wantedObjects">
+  {{#each wantedObjects}}
+    <li>
+      {{> wantedObject}}
+    </li>
+  {{/each}}
 </template>
 
-<template name="requestedobject">
-  {{name}}
+<template name="wantedObject">
+    <div class="thumbnail front">
+      <div class="img" style="background-image:url({{image}})">
+        <div class="map" id="map-canvas"></div>
+      </div>
+      <div class='btn-toolbar like-buttons'>
+              <a class="btn btn-inverse btn-likeit" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Like it!"><i class="icon-thumbs-up icon-white"></i>({{ likes }})</a>
+              <a class="btn btn-inverse btn-dislikeit" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Unlike it!"><i class="icon-thumbs-down icon-white"></i>({{ dislikes }})</a>
+              <a class="btn btn-inverse btn-report" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Report"><i class="icon-flag icon-white"></i>({{ spam }})</a>
+
+      </div>
+
+      <div class='caption'>
+        <h3>{{name}}</h3>
+        <p>{{descr}}</p>
+        <div class='btn-toolbar request-buttons'>
+              <a class="btn btn-primary btn-success btn-request">Request</a>
+              <a class="btn btn-danger btn-forget">Forget</a>
+              <a class="btn btn-inverse btn-profile" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="profile" ><i class="icon-user icon-white"></i></a>
+              <a class="btn btn-inverse btn-direction" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="directions"><i class="icon-map-marker icon-white"></i></a>
+              <a class="btn btn-inverse btn-share" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="share"><i class="icon-bell icon-white"></i></a>
+        </div>
+      </div>
+
+    <!--
+    <div class='thumbnail back'>
+      {{! profile detail will be rendered here }}
+      <div class="img" style="background-image:url({{image}})">
+      </div>
+    </div>
+    -->
+  </div>
 </template>
 
-<template name="add_object">
+<template name="addObject">
   <h6>Here we will add new object for this client</h6>
 
 </template>

@@ -17,6 +17,7 @@ Meteor.methods({
 
 
     if (Meteor.isServer) {
+      /*
       UnusedObjects.update(
         { _id: object_id },
         { $push: { requests: this.userId } }
@@ -26,6 +27,15 @@ Meteor.methods({
       UnusedObjects.update(
         { _id: object_id },
         { $push: { requests: this.userId } }
+      );
+    }
+    */
+      var now = new Date();
+      WantedObjects.insert(
+        { 'user': Meteor.userId(),
+          'object_id': object_id,
+          'date': now
+        }
       );
     }
   },

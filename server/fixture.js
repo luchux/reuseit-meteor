@@ -9,6 +9,7 @@ else
 
 
 UnusedObjects = new Meteor.Collection('uobjects')
+WantedObjects = new Meteor.Collection('wobjects')
 
 if (UnusedObjects.find().count() === 0) {
 

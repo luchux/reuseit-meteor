@@ -1,5 +1,23 @@
 UnusedObjects = new Meteor.Collection('uobjects')
+WantedObjects = new Meteor.Collection('wobjects')
+
 Meteor.subscribe("objects-others");
+Meteor.subscribe("wanted-objects")
+
+
+//Template wantedObjects show objects that the user wants.
+
+Template.wantedObjects.wantedObjects = function () {
+  if (Meteor.userId() !== 'undefined') {
+    var a = WantedObjects.find({user: Meteor.userId()})
+    console.log(a.fetch())
+    return a
+  }
+  else{
+    console.log("empty")
+    return []
+  }
+}
 
 //Injection of unused_objects list into template unusedobject.
 Template.objectList.unused_objects = function () {

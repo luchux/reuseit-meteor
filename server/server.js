@@ -12,6 +12,9 @@ Meteor.publish('objects-requested', function () {
   });
 });
 
+Meteor.publish('wanted-objects', function() {
+    return WantedObjects.find({ 'user': this.userId})
+})
 Meteor.startup(function () {
   // code to run on server at startup
 });

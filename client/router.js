@@ -1,3 +1,5 @@
 Meteor.Router.add({
-  '/': 'objectList'
+  '/': 'objectList',
+  '/wanted': 'wantedObjects',
+  '/add': 'addObject'
 });
